@@ -1,20 +1,18 @@
 // Write your JavaScript code here!
 
-const { formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
     let form = this.document.querySelector("form");
     form.addEventListener("submit", function(event) {
-        let pilotName = document.querySelector("input[name=pilotName]");
-        let copilotName = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoMass = document.querySelector("input[name=cargoMass]");
-        if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "") {
-            console.log("missing entry");
-            alert("All field are required!")
-            event.preventDefault();
-        }
-        formSubmission(this.document, );
+        event.preventDefault();
+        let pilotName = document.querySelector("input[name=pilotName]").value;
+        let copilotName = document.querySelector("input[name=copilotName]").value;
+        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+        let cargoMass = document.querySelector("input[name=cargoMass]").value;
+        let list = document.getElementById("faultyItems");
+        
+        formSubmission(document, list, pilotName, copilotName, fuelLevel, cargoMass);  
+        
     })
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()

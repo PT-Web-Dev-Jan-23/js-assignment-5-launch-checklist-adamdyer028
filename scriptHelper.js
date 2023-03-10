@@ -1,6 +1,7 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
    /*
@@ -17,15 +18,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
+    
    if (testInput === "") {
     return "Empty";
    } 
-   let toNumber = Number(testInput);
-   if (toNumber === "number") {
-    return "Is a Number";
-   } else {
-    return "Not a Number";
-   }
+   if (typeof(Number(testInput)) === "number") {
+    return "Is a Number"
+  }
+   return "Not a Number"
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -34,16 +34,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    let fuelLevelValidity = validateInput(fuelLevel);
    let cargoLevelValidity = validateInput(cargoLevel);
 
-   if (pilotValidity !== "Not a Number") {
+   console.log(pilotValidity)
+   if (pilotValidity === "Is a Number" || pilotValidity === "Empty") {
     alert("Invalid input for pilot, please enter a name.")
    }
-   if (copilotValidity !== "Not a Number") {
+   if (copilotValidity === "Is a Number" || copilotValidity === "Empty") {
     alert("Invalid input for copilot, please enter a name.")
    }
-   if (fuelLevelValidity !== "Is a Number") {
+   if (fuelLevelValidity === "Not a Number" || fuelLevelValidity === "Empty") {
     alert("Invalid input for fuel level, please enter a number.")
    }
-   if (cargoLevelValidity !== "Is a Number") {
+   if (cargoLevelValidity === "Not a Number" || cargoLevelValidity === "Empty") {
     alert("Invalid input for cargo level, please enter a number.")
    }
 }
